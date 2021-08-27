@@ -3,6 +3,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Recipe from './pages/Recipe';
+import Category from './pages/Category';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,6 +33,10 @@ const App = () => (
         </Route>
         <Route exact path="/recipe/:id">
           <Recipe />
+        </Route>
+
+        <Route exact path="/category/:name">
+          <Category />
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />
