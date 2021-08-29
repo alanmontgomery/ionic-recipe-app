@@ -1,11 +1,24 @@
 import { useEffect, useState } from "react";
-import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
-import styles from "./Home.module.scss";
+import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRouterLink, IonRow, IonSearchbar, IonTitle, IonToolbar, useIonModal } from '@ionic/react';
+import styles from "./Categories.module.scss";
 import { recipes } from "../utils";
+import { useRef } from "react";
+import { SearchModal } from "../components/SearchModal";
 
-const Home = () => {
+const Categories = () => {
 
+    const pageRef = useRef();
 	const [ recipeCategories, setRecipeCategories ] = useState([]);
+    
+    const handleDismiss = () => {
+
+        dismissModal();
+    };
+
+    const [ presentModal, dismissModal ] = useIonModal(SearchModal, {
+
+        onDismiss: handleDismiss
+    });
 
 	useEffect(() => {
 
@@ -48,38 +61,36 @@ const Home = () => {
 		getAllRecipes();
 	}, []);
 
-	console.log(recipeCategories);
-
 	return (
-		<IonPage>
-			<IonHeader>
-				<IonToolbar>
-					<IonTitle>Blank</IonTitle>
+		<IonPage ref={ pageRef }>
+			<IonHeader className="ion-no-border">
+                <IonToolbar className="ion-no-border">
+                    <IonTitle>Recipe Categories</IonTitle>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent fullscreen>
-				<IonHeader collapse="condense">
-					<IonToolbar>
-						<IonTitle size="large">Recipe Categories</IonTitle>
-					</IonToolbar>
-				</IonHeader>
+                <div className={ styles.searchArea }>
+                    <IonSearchbar className="ion-justify-content-center" placeholder="Try 'Chicken Piccata'" onClick={ e => presentModal({
+                        presentingElement: pageRef.current,
+                        onDidDismiss: dismissModal
+                    })} />
+                </div>
 
 				<IonGrid>
-
-					<IonRow>
+					<IonRow className={ styles.row }>
 						{ recipeCategories.map((category, index) => {
 
 							const { name, data } = category;
 							const { recipe } = data;
 
 							return (
-								<IonCol size="6" key={ `recipe_${ index }` }>
-									<IonCard routerLink={ `/category/${ name }`}>
+								<IonCol className={ styles.col } size="6" key={ `recipe_${ index }` }>
+                                    <IonRouterLink className={ styles.card } routerLink={ `/category/${ name }`}>
 										<IonImg src={ recipe.image } alt="cover" />
 										<div className={ styles.categoryName }>
 											<IonCardTitle>{ name }</IonCardTitle>
 										</div>
-									</IonCard>
+									</IonRouterLink>
 								</IonCol>
 							);
 						})}
@@ -90,4 +101,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Categories;

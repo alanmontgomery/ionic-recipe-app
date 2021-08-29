@@ -2,6 +2,7 @@ import { IonAvatar, IonBackButton, IonButton, IonButtons, IonCard, IonCardTitle,
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
+import { RecipeListItem } from '../components/RecipeListItem';
 import { recipes } from '../utils';
 import styles from "./Category.module.scss";
 
@@ -41,15 +42,7 @@ const Category = () => {
                             const { recipe } = categoryRecipe;
 
                             return (
-                                <IonItem lines="full" key={ `recipe_${ index }` } className={ styles.categoryItem }>
-                                    
-                                    <img src={ recipe.image } alt="cover" className={ styles.categoryImage } />
-
-                                    <IonLabel className={ styles.categoryDetails }>
-                                        <h2>{ recipe.label }</h2>
-                                        <p>{ recipe.dishType && recipe.dishType[0] }</p>
-                                    </IonLabel>
-                                </IonItem>
+                                <RecipeListItem recipe={ recipe } key={ `recipe_${ index }` } />
                             );
                         })}
                 </IonList>

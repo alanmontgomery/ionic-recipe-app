@@ -74,4 +74,58 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-color-main: #1BAD64;
+  --ion-color-main-rgb: 27,173,100;
+  --ion-color-main-contrast: #ffffff;
+  --ion-color-main-contrast-rgb: 255,255,255;
+  --ion-color-main-shade: #189858;
+  --ion-color-main-tint: #32b574;
+
+  --ion-background-color: white;
+  --ion-tab-bar-background: rgb(36, 36, 36);
+  --ion-toolbar-background: rgb(36, 36, 36);
+  --ion-tab-bar-color-selected: rgb(27, 173, 100);
+  --ion-tab-bar-color: rgb(97, 97, 97);
+}
+
+.ion-color-main {
+  --ion-color-base: var(--ion-color-main);
+  --ion-color-base-rgb: var(--ion-color-main-rgb);
+  --ion-color-contrast: var(--ion-color-main-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-main-contrast-rgb);
+  --ion-color-shade: var(--ion-color-main-shade);
+  --ion-color-tint: var(--ion-color-main-tint);
+}
+
+ion-toolbar ion-title {
+
+  --color: white;
+}
+
+ion-toolbar ion-back-button,
+ion-toolbar ion-button {
+
+  --color: rgb(27, 173, 100);
+}
+
+ion-content ion-toolbar ion-title {
+
+  color: rgb(36, 36, 36);
+}
+
+* {
+
+  font-family: 'Ubuntu', sans-serif;
+}
+
+ion-toolbar {
+  --border-style: none;
+}
+
+.customLoader {
+
+  --background: var(--ion-toolbar-background);
+  --spinner-color: var(--ion-tab-bar-color-selected);
+  color: white;
 }
