@@ -4,6 +4,7 @@ import styles from "./Categories.module.scss";
 import { recipes } from "../utils";
 import { useRef } from "react";
 import { SearchModal } from "../components/SearchModal";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
 
@@ -72,7 +73,8 @@ const Categories = () => {
                 <div className={ styles.searchArea }>
                     <IonSearchbar className="ion-justify-content-center" placeholder="Try 'Chicken Piccata'" onClick={ e => presentModal({
                         presentingElement: pageRef.current,
-                        onDidDismiss: dismissModal
+                        onDidDismiss: dismissModal,
+                        cssClass: "customModal"
                     })} />
                 </div>
 
@@ -84,14 +86,15 @@ const Categories = () => {
 							const { recipe } = data;
 
 							return (
-								<IonCol className={ styles.col } size="6" key={ `recipe_${ index }` }>
-                                    <IonRouterLink className={ styles.card } routerLink={ `/category/${ name }`}>
-										<IonImg src={ recipe.image } alt="cover" />
-										<div className={ styles.categoryName }>
-											<IonCardTitle>{ name }</IonCardTitle>
-										</div>
-									</IonRouterLink>
-								</IonCol>
+                                
+                                    <IonCol className={ styles.col } size="6" key={ `recipe_${ index }` }>
+                                        <Link to={ `/category/${ name }`}>
+                                            <img src={ recipe.image } alt="cover" />
+                                            <div className={ styles.categoryName }>
+                                                <IonCardTitle>{ name }</IonCardTitle>
+                                            </div>
+                                        </Link>
+                                    </IonCol>
 							);
 						})}
 					</IonRow>

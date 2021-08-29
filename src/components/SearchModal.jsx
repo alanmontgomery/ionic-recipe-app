@@ -58,7 +58,7 @@ export const SearchModal = ({ onDismiss }) => {
                                 <IonSearchbar ref={ searchRef } placeholder="Try 'Chicken Piccata'" />
                             </IonCol>
                             <IonCol size="3">
-                                <IonButton className={ styles.searchButton } expand="full" color="main" onClick={ search }>Search</IonButton>
+                                <IonButton className={ styles.searchButton } expand="block" color="main" onClick={ search }>Search</IonButton>
                             </IonCol>
                         </IonRow>
                     </IonGrid>

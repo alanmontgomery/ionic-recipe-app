@@ -129,3 +129,8 @@ ion-toolbar {
   --spinner-color: var(--ion-tab-bar-color-selected);
   color: white;
 }
+
+.customModal {
+
+  --background: var(--ion-toolbar-background);
+}
