@@ -6,7 +6,6 @@ If you'd like to support, you can <a className="link" href="https://www.buymeaco
 ![Ionic React Recipe App](https://repository-images.githubusercontent.com/400638496/5f684998-e1a9-4c34-8c7a-915ca2a56c78)
 
 ### Included in this Ionic React Template/UI
-* Add to bookmarks
 * View Recipes by pre-defined categories
 * Search any recipe (API)
 * Add to bookmarks
