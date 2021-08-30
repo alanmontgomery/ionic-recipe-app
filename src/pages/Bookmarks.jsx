@@ -7,7 +7,7 @@ import { getBookmarks } from '../store/Selectors';
 
 const Bookmarks = () => {
 
-	const bookmarks = useStoreState(BookmarkStore, getBookmarks);
+	const bookmarks = useStoreState(BookmarkStore, getBookmarks); 
 
 	return (
 		<IonPage>
