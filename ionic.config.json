@@ -1,5 +1,7 @@
 {
   "name": "ionic-recipe-app",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }

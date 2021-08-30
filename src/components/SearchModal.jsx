@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import styles from "../pages/Categories.module.scss";
+import { performSearch } from "../utils";
 import { RecipeListItem } from "./RecipeListItem";
 
 export const SearchModal = ({ onDismiss }) => {
@@ -25,9 +26,7 @@ export const SearchModal = ({ onDismiss }) => {
         });
 
         const searchTerm = searchRef.current.value;
-
-        const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${ searchTerm }&app_id=ea1d37d5&app_key=fd382a172ba8d6668c0430dc9c14a181`);
-		const data = await response.json();
+        const data = await performSearch(searchTerm);
 
         setSearchResults(data.hits);
 
@@ -64,14 +63,14 @@ export const SearchModal = ({ onDismiss }) => {
                     </IonGrid>
                 </div>
 
-                { searchResults.length > 0 && 
+                { searchResults.length > 0 &&
                     <IonList>
                         { searchResults.map((result, index) => {
 
                             const { recipe } = result;
 
                             return (
-                                <RecipeListItem recipe={ recipe } key={ `result_${ index }` } />
+                                <RecipeListItem recipe={ recipe } key={ `result_${ index }` } closeModal={ onDismiss } />
                             );
                         })}
                     </IonList>

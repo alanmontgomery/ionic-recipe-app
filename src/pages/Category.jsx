@@ -39,12 +39,12 @@ const Category = () => {
                 <IonList>
                     { categoryRecipes.map((categoryRecipe, index) => {
 
-                            const { recipe } = categoryRecipe;
+                        const { recipe } = categoryRecipe;
 
-                            return (
-                                <RecipeListItem recipe={ recipe } key={ `recipe_${ index }` } />
-                            );
-                        })}
+                        return (
+                            <RecipeListItem recipe={ recipe } key={ `recipe_${ index }` } />
+                        );
+                    })}
                 </IonList>
 			</IonContent>
 		</IonPage>

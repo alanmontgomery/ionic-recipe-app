@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IonButton, IonButtons, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonPage, IonRow, IonSearchbar, IonTitle, IonToolbar, useIonModal } from '@ionic/react';
+import { IonButton, IonButtons, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonModal, IonPage, IonRow, IonSearchbar, IonTitle, IonToolbar } from '@ionic/react';
 import styles from "./Categories.module.scss";
 import { recipes } from "../recipes";
 import { useRef } from "react";
@@ -11,16 +11,7 @@ const Categories = () => {
 
     const pageRef = useRef();
 	const [ recipeCategories, setRecipeCategories ] = useState([]);
-    
-    const handleDismiss = () => {
-
-        dismissModal();
-    };
-
-    const [ presentModal, dismissModal ] = useIonModal(SearchModal, {
-
-        onDismiss: handleDismiss
-    });
+	const [ showModal, setShowModal ] = useState(false);
 
 	useEffect(() => {
 
@@ -74,11 +65,7 @@ const Categories = () => {
 			</IonHeader>
 			<IonContent fullscreen>
                 <div className={ styles.searchArea }>
-                    <IonSearchbar className="ion-justify-content-center" placeholder="Try 'Chicken Piccata'" onClick={ e => presentModal({
-                        presentingElement: pageRef.current,
-                        onDidDismiss: dismissModal,
-                        cssClass: "customModal"
-                    })} />
+                    <IonSearchbar className="ion-justify-content-center" placeholder="Try 'Chicken Piccata'" onClick={ () => setShowModal(true) } />
                 </div>
 
 				<IonGrid>
@@ -102,6 +89,10 @@ const Categories = () => {
 						})}
 					</IonRow>
 				</IonGrid>
+
+				<IonModal isOpen={ showModal } onDidDismiss={ () => setShowModal(false) } presentingElement={ pageRef.current } cssClass="customModal">
+					<SearchModal onDismiss={ () => setShowModal(false) } />
+				</IonModal>
 			</IonContent>
 		</IonPage>
 	);
