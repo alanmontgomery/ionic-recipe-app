@@ -8,7 +8,7 @@ If you'd like to support, you can <a className="link" href="https://www.buymeaco
 ### Included in this Ionic React Template/UI
 * Add to bookmarks
 * View Recipes by pre-defined categories
-* Search any recipe
+* Search any recipe (API)
 * Add to bookmarks
 * View nutritional values and ingredients
 * Global state management with Pullstate
