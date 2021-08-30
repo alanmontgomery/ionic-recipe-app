@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonPage, IonRouterLink, IonRow, IonSearchbar, IonTitle, IonToolbar, useIonModal } from '@ionic/react';
+import { IonButton, IonButtons, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonPage, IonRow, IonSearchbar, IonTitle, IonToolbar, useIonModal } from '@ionic/react';
 import styles from "./Categories.module.scss";
-import { recipes } from "../utils";
+import { recipes } from "../recipes";
 import { useRef } from "react";
 import { SearchModal } from "../components/SearchModal";
 import { Link } from "react-router-dom";
+import { bookmarkOutline } from "ionicons/icons";
 
 const Categories = () => {
 
@@ -24,10 +25,6 @@ const Categories = () => {
 	useEffect(() => {
 
 		const getAllRecipes = async () => {
-
-			// const response = await fetch("https://api.edamam.com/api/recipes/v2?type=public&q=vegan&app_id=ea1d37d5&app_key=fd382a172ba8d6668c0430dc9c14a181");
-			// const data = await response.json();
-			// console.log(data);
 
 			const tempRecipeCategories = [
 				{
@@ -67,6 +64,12 @@ const Categories = () => {
 			<IonHeader className="ion-no-border">
                 <IonToolbar className="ion-no-border">
                     <IonTitle>Recipe Categories</IonTitle>
+
+                    <IonButtons slot="end">
+                        <IonButton>
+                            <IonIcon icon={ bookmarkOutline } />
+                        </IonButton>
+                    </IonButtons>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent fullscreen>
@@ -87,14 +90,14 @@ const Categories = () => {
 
 							return (
                                 
-                                    <IonCol className={ styles.col } size="6" key={ `recipe_${ index }` }>
-                                        <Link to={ `/category/${ name }`}>
-                                            <img src={ recipe.image } alt="cover" />
-                                            <div className={ styles.categoryName }>
-                                                <IonCardTitle>{ name }</IonCardTitle>
-                                            </div>
-                                        </Link>
-                                    </IonCol>
+                                <IonCol className={ styles.col } size="6" key={ `recipe_${ index }` }>
+                                    <Link to={ `/category/${ name }`}>
+                                        <img src={ recipe.image } alt="cover" />
+                                        <div className={ styles.categoryName }>
+                                            <IonCardTitle>{ name }</IonCardTitle>
+                                        </div>
+                                    </Link>
+                                </IonCol>
 							);
 						})}
 					</IonRow>

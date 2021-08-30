@@ -1,18 +1,36 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useLocation } from 'react-router';
 import styles from "./Recipe.module.scss";
 
 const Recipe = () => {
+
+	const { state } = useLocation();
+	const [ recipe, setRecipe ] = useState([]);
+
+	useEffect(() => {
+
+		if (state && state.recipe) {
+
+			setRecipe(state.recipe);
+		}
+	}, [ state ]);
+
 	return (
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
-					<IonTitle>Blank</IonTitle>
+					<IonTitle>{ recipe && recipe.label }</IonTitle>
+					<IonButtons slot="start">
+						<IonBackButton text="Recipes" color="main" />
+					</IonButtons>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent fullscreen>
 				<IonHeader collapse="condense">
 					<IonToolbar>
-						<IonTitle size="large">Blank</IonTitle>
+						<IonTitle size="large">{recipe && recipe.label}</IonTitle>
 					</IonToolbar>
 				</IonHeader>
 			</IonContent>

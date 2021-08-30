@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonList, IonNote, IonPage, IonRow, IonSearchbar, IonTitle, IonToolbar, useIonLoading, useIonViewDidEnter } from "@ionic/react"
+import { IonButton, IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonList, IonNote, IonPage, IonRow, IonSearchbar, IonText, IonTitle, IonToolbar, useIonLoading } from "@ionic/react"
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
@@ -82,8 +82,12 @@ export const SearchModal = ({ onDismiss }) => {
                     <>
                         <IonRow className="ion-justify-content-center ion-text-center ion-margin-top ion-padding-top">
                             <IonCol size="8">
-                                <IonNote>
+                                <IonText>
                                     Search for a recipe then select from the list to view it
+                                </IonText>
+
+                                <IonNote>
+                                    <p>For development purposes, only 20 results will be returned</p>
                                 </IonNote>
                             </IonCol>
                         </IonRow>

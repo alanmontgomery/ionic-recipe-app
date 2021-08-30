@@ -1,9 +1,9 @@
-import { IonAvatar, IonBackButton, IonButton, IonButtons, IonCard, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonItem, IonLabel, IonList, IonPage, IonRow, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
+import { IonBackButton, IonButtons, IonContent, IonHeader, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import { RecipeListItem } from '../components/RecipeListItem';
-import { recipes } from '../utils';
+import { recipes } from '../recipes';
 import styles from "./Category.module.scss";
 
 const Category = () => {

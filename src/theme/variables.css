@@ -134,3 +134,8 @@ ion-toolbar {
 
   --background: var(--ion-toolbar-background);
 }
+
+a {
+
+  text-decoration: none;
+}
