@@ -1,0 +1,37 @@
+.headerImage {
+
+	img {
+
+		width: 100%;
+		margin-top: -5rem;
+		border-bottom: 5px solid var(--ion-color-main);
+	}
+
+	.headerInfo {
+
+		position: absolute;
+		top: 10rem;
+		z-index: 10;
+
+		background-color: rgba($color: #000000, $alpha: 0.8);
+		color: white;
+		padding: 1rem;
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
+
+		h1 {
+
+			font-size: 1.1rem;
+			padding: 0;
+			margin: 0;
+		}
+
+		p {
+
+			font-size: 0.9rem;
+			padding: 0;
+			margin: 0;
+			color: var(--ion-color-main);
+		}
+	}
+}

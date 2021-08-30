@@ -4,6 +4,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import Recipe from './pages/Recipe';
 import Categories from './pages/Categories';
 import Category from './pages/Category';
+import Search from './pages/Search';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -37,6 +38,10 @@ const App = () => (
 
         <Route exact path="/category/:name">
           <Category />
+        </Route>
+
+        <Route exact path="/search">
+          <Search />
         </Route>
         <Route exact path="/">
           <Redirect to="/categories" />

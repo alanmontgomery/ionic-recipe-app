@@ -1,20 +1,20 @@
-import { IonButton, IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonList, IonNote, IonPage, IonRow, IonSearchbar, IonText, IonTitle, IonToolbar, useIonLoading } from "@ionic/react"
+import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonList, IonNote, IonPage, IonRow, IonSearchbar, IonText, IonTitle, IonToolbar, useIonLoading, useIonViewDidEnter } from "@ionic/react"
 import { useState } from "react";
-import { useEffect } from "react";
 import { useRef } from "react";
-import styles from "../pages/Categories.module.scss";
+import styles from "./Categories.module.scss";
 import { performSearch } from "../utils";
-import { RecipeListItem } from "./RecipeListItem";
+import { RecipeListItem } from "../components/RecipeListItem";
 
-export const SearchModal = ({ onDismiss }) => {
+const Search = () => {
 
     const searchRef = useRef();
     const [ searchResults, setSearchResults ] = useState([]);
     const [ showLoader, hideLoader ] = useIonLoading();
 
-    useEffect(() => {
-        searchRef.current.setFocus();
-    }, []);
+    useIonViewDidEnter(() => {
+
+		searchRef.current.setFocus();
+	});
 
     const search = async () => {
 
@@ -42,8 +42,8 @@ export const SearchModal = ({ onDismiss }) => {
             <IonHeader>
                 <IonToolbar>
                     <IonTitle>Search Recipes</IonTitle>
-                    <IonButtons slot="end">
-                        <IonButton onClick={ onDismiss }>Close</IonButton>
+                    <IonButtons slot="start">
+                        <IonBackButton color="main" text="Categories" />
                     </IonButtons>
                 </IonToolbar>
             </IonHeader>
@@ -70,7 +70,7 @@ export const SearchModal = ({ onDismiss }) => {
                             const { recipe } = result;
 
                             return (
-                                <RecipeListItem recipe={ recipe } key={ `result_${ index }` } closeModal={ onDismiss } />
+                                <RecipeListItem recipe={ recipe } key={ `result_${ index }` } fromSearch={ true } />
                             );
                         })}
                     </IonList>
@@ -102,3 +102,5 @@ export const SearchModal = ({ onDismiss }) => {
         </IonPage>
     );
 }
+
+export default Search;

@@ -2,9 +2,9 @@ import { IonItem, IonLabel } from "@ionic/react";
 import { Link } from "react-router-dom";
 import styles from "./RecipeListItem.module.scss";
 
-export const RecipeListItem = ({ recipe, closeModal }) => (
+export const RecipeListItem = ({ recipe, fromSearch = false }) => (
 
-    <Link onClick={ closeModal && closeModal } to={{ pathname: `/recipe/${ recipe.label.replace(" ", "").toLowerCase() }`, state: { recipe }}}>
+    <Link to={{ pathname: `/recipe/${ recipe.label.replace(" ", "").toLowerCase() }`, state: { recipe, fromSearch }}}>
         <IonItem detail={ true } lines="full" className={ styles.categoryItem }>
                                         
             <img src={ recipe.image } alt="cover" className={ styles.categoryImage } />
