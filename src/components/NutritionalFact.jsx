@@ -1,6 +1,6 @@
 import { IonCardTitle, IonCol, IonRow } from "@ionic/react";
 
-const NutritionalFact = ({ type, nutrition, amount, inset }) => {
+const NutritionalFact = ({ type, amount, inset }) => {
 
     const label = type.replace("_", " ").replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
 

@@ -5,6 +5,7 @@ import Recipe from './pages/Recipe';
 import Categories from './pages/Categories';
 import Category from './pages/Category';
 import Search from './pages/Search';
+import Bookmarks from './pages/Bookmarks';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -42,6 +43,10 @@ const App = () => (
 
         <Route exact path="/search">
           <Search />
+        </Route>
+
+        <Route exact path="/bookmarks">
+          <Bookmarks />
         </Route>
         <Route exact path="/">
           <Redirect to="/categories" />

@@ -5,12 +5,16 @@ import { recipes } from "../recipes";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { bookmarkOutline } from "ionicons/icons";
+import { getBookmarks } from "../store/Selectors";
+import { useStoreState } from "pullstate";
+import { BookmarkStore } from "../store";
 
 const Categories = () => {
 
 	const router = useIonRouter();
     const pageRef = useRef();
 	const [ recipeCategories, setRecipeCategories ] = useState([]);
+	const bookmarks = useStoreState(BookmarkStore, getBookmarks)
 
 	useEffect(() => {
 
@@ -56,8 +60,9 @@ const Categories = () => {
                     <IonTitle>Recipe Categories</IonTitle>
 
                     <IonButtons slot="end">
-                        <IonButton>
-                            <IonIcon icon={ bookmarkOutline } />
+                        <IonButton routerLink="/bookmarks">
+                            <IonIcon icon={ bookmarkOutline } />&nbsp;
+							{ bookmarks.length }
                         </IonButton>
                     </IonButtons>
 				</IonToolbar>

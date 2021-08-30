@@ -1,5 +1,4 @@
-import { IonButton, IonButtons, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonList, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react"
-import { recipes } from "../recipes";
+import { IonButton, IonButtons, IonCardSubtitle, IonCol, IonContent, IonGrid, IonHeader, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react"
 import NutritionalFact from "./NutritionalFact";
 
 const NutritionModal = ({ dismiss, recipe }) => {

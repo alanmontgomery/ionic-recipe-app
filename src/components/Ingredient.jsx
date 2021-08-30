@@ -5,7 +5,7 @@ export const Ingredient = ({ ingredient }) => {
 
 	return (
 
-		<IonItem lines="full">
+		<IonItem lines="full" className={ styles.ingredientItem }>
 			<img alt="ingredient" src={ ingredient.image } className={ styles.ingredientImage } />
 			<IonLabel className="ion-text-wrap ion-margin-start">
 				<h3>{ ingredient.text }</h3>
