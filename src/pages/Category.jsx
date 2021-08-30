@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useParams } from 'react-router';
 import { RecipeListItem } from '../components/RecipeListItem';
 import { recipes } from '../recipes';
-import styles from "./Category.module.scss";
 
 const Category = () => {
 
@@ -15,9 +14,6 @@ const Category = () => {
 
         setCategoryRecipes(recipes[name.toLowerCase()].hits);
     }, [ name ]);
-
-    console.log(name);
-    console.log(categoryRecipes);
 
 	return (
 		<IonPage>

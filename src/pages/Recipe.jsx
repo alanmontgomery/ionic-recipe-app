@@ -64,12 +64,12 @@ const Recipe = () => {
 		}
 	}, [ state ]);
 
-	const addBookmark = () => {
+	const addBookmark = async () => {
 
-		addToBookmarks(recipe);
+		const added = addToBookmarks(recipe);
 		showToast({
 
-			message: "This recipe has been bookmarked!",
+			message: added ? "This recipe has been bookmarked!" : "This recipe has been removed from your bookmarks.",
 			duration: 2000,
 			color: "main"
 		});

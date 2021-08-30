@@ -1,4 +1,4 @@
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonButtons, IonCol, IonContent, IonHeader, IonImg, IonList, IonNote, IonPage, IonRow, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import { RecipeListItem } from '../components/RecipeListItem';
 
 import { useStoreState } from "pullstate";
@@ -8,8 +8,6 @@ import { getBookmarks } from '../store/Selectors';
 const Bookmarks = () => {
 
 	const bookmarks = useStoreState(BookmarkStore, getBookmarks);
-
-	console.log(bookmarks);
 
 	return (
 		<IonPage>
@@ -36,6 +34,29 @@ const Bookmarks = () => {
                         );
                     })}
                 </IonList>
+
+				{ bookmarks.length < 1 &&
+                
+				<>
+					<IonRow className="ion-justify-content-center ion-text-center ion-margin-top ion-padding-top">
+						<IonCol size="8">
+							<IonText>
+								You don't have any bookmarks yet
+							</IonText>
+
+							<IonNote>
+								<p>When viewing a recipe, press the bookmark icon to add it</p>
+							</IonNote>
+						</IonCol>
+					</IonRow>
+
+					<IonRow className="ion-justify-content-center">
+						<IonCol size="8">
+							<IonImg src="/assets/bookmark.png" />
+						</IonCol>
+					</IonRow>
+				</>
+			}
 			</IonContent>
 		</IonPage>
 	);

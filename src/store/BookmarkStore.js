@@ -8,13 +8,20 @@ const BookmarkStore = new Store({
 export default BookmarkStore;
 
 export const addToBookmarks = (passedRecipe) => {
-    
+
+    const currentBookmarks = BookmarkStore.getRawState().recipes;
+    const added = !currentBookmarks.includes(passedRecipe);
+
     BookmarkStore.update(s => {
 
-        if (s.recipes.find(recipe => recipe === passedRecipe)) {
-            s.coffee_ids = s.recipes.filter(recipe => recipe !== passedRecipe);
+        if (currentBookmarks.includes(passedRecipe)) {
+            
+            s.recipes = currentBookmarks.filter(bookmark => bookmark !== passedRecipe);
         } else {
+            
             s.recipes = [ ...s.recipes, passedRecipe ];
         }
     });
+
+    return added;
 }
